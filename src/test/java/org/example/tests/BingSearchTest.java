@@ -33,15 +33,13 @@ public class BingSearchTest {
     }
 
     @DisplayName("Проверка поисковой строки в поисковике bing")
-    @Test
+    @RepeatedTest(1)
     public void searchResultsTest() {
-        String input = "Selenium";
+        String input = "selenium";
         MainPage mp = new MainPage(driver);
         mp.sendText(input);
-
         ResultsPage rp = new ResultsPage(driver);
         rp.searchPage(0, input);
-
         assertEquals("https://www.selenium.dev/", rp.getCurrentUrll(input), "Переход не по первой ссылке списка!!!");
     }
 

@@ -23,9 +23,7 @@ public class ResultsPage {
     public void searchPage(int num, String sel) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         System.out.println(result.get(num));
-        wait.until(ExpectedConditions.and(
-                ExpectedConditions.elementToBeClickable(result.get(num)),
-                ExpectedConditions.attributeContains(result.get(num), "href", sel)));
+        wait.until(ExpectedConditions.attributeContains(result.get(num), "href", sel));
         result.get(num).click();
         System.out.println("Нажата первая ссылка из списка" + num);
     }
@@ -33,7 +31,7 @@ public class ResultsPage {
     public String getCurrentUrll(String url) {
         ArrayList tabs = new ArrayList<>(driver.getWindowHandles());
         if (tabs.size() > 1) driver.switchTo().window(tabs.get(1).toString());
-        WebDriverWait waitTwo = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebDriverWait waitTwo = new WebDriverWait(driver, Duration.ofSeconds(6));
         waitTwo.until(ExpectedConditions.urlContains(url));
         return driver.getCurrentUrl();
     }

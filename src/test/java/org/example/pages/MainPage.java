@@ -12,7 +12,6 @@ public class MainPage {
     @FindBy(css = "#sb_form_q")
     private WebElement searchField;
 
-
     public void sendText(String text) {
         searchField.sendKeys(text);
         searchField.submit();
