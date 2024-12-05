@@ -1,5 +1,7 @@
 package org.example.pages;
 
+import org.junit.platform.commons.logging.Logger;
+import org.junit.platform.commons.logging.LoggerFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +16,8 @@ import java.util.List;
 public class ResultsPage {
     private WebDriver driver;
 
+    private final Logger LOG = LoggerFactory.getLogger(ResultsPage.class);
+
     @FindBy(css = "#sb_form_q")
     private WebElement searchField;
 
@@ -25,7 +29,8 @@ public class ResultsPage {
         System.out.println(result.get(num));
         wait.until(ExpectedConditions.attributeContains(result.get(num), "href", sel));
         result.get(num).click();
-        System.out.println("Нажата первая ссылка из списка" + num);
+        LOG.
+        //System.out.println("Нажата первая ссылка из списка" + num);
     }
 
     public String getCurrentUrll(String url) {
