@@ -1,13 +1,14 @@
 package org.example.pages;
 
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -28,8 +29,9 @@ public class ResultsPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         System.out.println(result.get(num));
         wait.until(ExpectedConditions.attributeContains(result.get(num), "href", sel));
+        LOG.info("Нажата первая ссылка из списка");
         result.get(num).click();
-        LOG.
+
         //System.out.println("Нажата первая ссылка из списка" + num);
     }
 
