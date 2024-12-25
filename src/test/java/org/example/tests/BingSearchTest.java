@@ -43,6 +43,6 @@ public class BingSearchTest {
     public void searchResultsTest() {
         mp.sendText(input);
         rp.searchPage(0, input);
-        assertEquals("https://www.selenium.dev/", rp.getCurrentUrll(input), "Переход не по первой ссылке списка!!!");
+        assertEquals("https://www.selenium.dev/", rp.getCurrentUrl(input), "Переход не по первой ссылке списка!!!");
     }
 }

@@ -34,7 +34,7 @@ public class ResultsPage {
         result.get(num).click();
     }
 
-    public String getCurrentUrll(String url) {
+    public String getCurrentUrl(String url) {
         ArrayList tabs = new ArrayList<>(driver.getWindowHandles());
         if (tabs.size() > 1) driver.switchTo().window(tabs.get(1).toString());
         WebDriverWait waitTwo = new WebDriverWait(driver, Duration.ofSeconds(6));
