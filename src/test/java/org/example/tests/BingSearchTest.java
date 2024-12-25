@@ -2,7 +2,10 @@ package org.example.tests;
 
 import org.example.pages.MainPage;
 import org.example.pages.ResultsPage;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BingSearchTest {
     private WebDriver driver;
+    private MainPage mp = new MainPage(driver);
+    private ResultsPage rp = new ResultsPage(driver);
+    String input = "selenium";
 
     @BeforeEach
     public void setUp() {
@@ -35,13 +41,8 @@ public class BingSearchTest {
     @DisplayName("Проверка поисковой строки в поисковике bing")
     @RepeatedTest(1)
     public void searchResultsTest() {
-        String input = "selenium";
-        MainPage mp = new MainPage(driver);
         mp.sendText(input);
-        ResultsPage rp = new ResultsPage(driver);
         rp.searchPage(0, input);
         assertEquals("https://www.selenium.dev/", rp.getCurrentUrll(input), "Переход не по первой ссылке списка!!!");
     }
-
-
 }

@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +27,11 @@ public class ResultsPage {
     public void searchPage(int num, String sel) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         System.out.println(result.get(num));
-        wait.until(ExpectedConditions.attributeContains(result.get(num), "href", sel));
+        wait.until(ExpectedConditions.visibilityOfAllElements(result));
+        wait.until(ExpectedConditions.and(ExpectedConditions.attributeContains(result.get(num), "href", sel),
+                ExpectedConditions.elementToBeClickable(result.get(num))));
         LOG.info("Нажата первая ссылка из списка");
         result.get(num).click();
-
-        //System.out.println("Нажата первая ссылка из списка" + num);
     }
 
     public String getCurrentUrll(String url) {
